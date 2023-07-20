@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "name": "product",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "price": {
+      "type": "biginteger"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "user_id": {
+      "via": "products",
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "animal",
+        "food"
+      ],
+      "default": "animal"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "anjing",
+        "kucing",
+        "burung"
+      ]
+    },
+    "qty": {
+      "type": "integer"
+    },
+    "unit": {
+      "type": "string"
+    }
+  }
+}
